@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Colloquium MUN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(25, 118, 210, 0.8)),
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Parliament_House%2C_New_Delhi.jpg/1920px-Parliament_House%2C_New_Delhi.jpg') center/cover no-repeat fixed;
+            color: white;
+            text-align: center;
+            padding: 130px 20px 110px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .independence-text {
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .countdown {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 25px 50px;
+            border-radius: 16px;
+            display: inline-block;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO with Reliable Parliament Background -->
+    <div class="hero">
+        <div class="hero-content">
+            <p class="independence-text">15 AUGUST 2026 • INDEPENDENCE DAY</p>
+            <p class="text-xl tracking-wider mb-4">April 24-26th, 2026</p>
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                The 7th Edition of the<br>Colloquium MUN
+            </h1>
+            
+            <!-- Countdown -->
+            <div class="countdown">
+                <p class="text-sm uppercase tracking-widest mb-4 text-orange-200">Countdown to Independence Day</p>
+                <div id="countdown" class="flex justify-center gap-8 text-3xl font-semibold"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+        <h2 style="font-size: 1.85rem; color: #0d47a1; margin: 45px 0 20px;">Our Story</h2>
+        <blockquote>"In the 21st century, I believe the mission of the United Nations will be defined by a new, more profound awareness of the sanctity and dignity of every human life..." ~ Kofi Annan</blockquote>
+        <p>In 2015, a single idea took shape... Colloquium Model United Nations stands as a testament to the power of words, will, and collective aspiration.</p>
+
+        <h2 style="font-size: 1.85rem; color: #0d47a1; margin: 55px 0 20px;">Letter from the Secretariat</h2>
+        <p>Dear Delegates,<br><br>Warm regards,<br><strong>The Secretariat</strong><br>Colloquium Model United Nations</p>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav bg-white border-t border-b py-6 text-center">
+        <a href="#" class="mx-6 text-blue-700 hover:text-blue-900 font-medium">Code of Conduct</a>
+        <a href="#" class="mx-6 text-blue-700 hover:text-blue-900 font-medium">Matrix</a>
+        <a href="#" class="mx-6 text-blue-700 hover:text-blue-900 font-medium">Schedule</a>
+        <a href="#" class="mx-6 text-blue-700 hover:text-blue-900 font-medium">Crisis Updates</a>
+    </div>
+
+    <footer class="text-center py-8 bg-gray-100 text-gray-600">
+        Page updated • Colloquium MUN 2026
+    </footer>
+
+    <script>
+        function updateCountdown() {
+            const target = new Date("August 15, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = target - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "🎉 Independence Day 2026!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `
+                <div class="text-center"><span class="block text-5xl">${days}</span><span class="text-xs">DAYS</span></div>
+                <div class="text-center"><span class="block text-5xl">${hours}</span><span class="text-xs">HOURS</span></div>
+                <div class="text-center"><span class="block text-5xl">${minutes}</span><span class="text-xs">MIN</span></div>
+                <div class="text-center"><span class="block text-5xl">${seconds}</span><span class="text-xs">SEC</span></div>
+            `;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
